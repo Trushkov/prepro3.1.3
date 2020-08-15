@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+
+<nav class="navbar navbar-light navbar-expand-md bg-dark">
+    <div class="container-fluid">
+        <span class="text-light"><strong id="nameTitle"></strong></span>
+        <span class="text-light"> with roles: </span>
+        <span class="text-light" id="roleTitle"></span>
+        <ul class="nav navbar-nav flex-nowrap ml-auto">
+            <li class="nav-item" role="presentation"><a class="nav-link text-muted" href="/logout">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+
+    <div class="d-flex">
+        <div class="col-md-2 vh-100 table-light pl-0 pr-0 pt-3">
+
+                <ul class="nav nav-pills flex-column" aria-orientation="vertical">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/user">User</a>
+                    </li>
+                </ul>
+
+        </div>
+        <div class="col-md-10 vh-100" style="background-color: #f5f5f5;padding: 0px;">
+            <h2 style="margin: 10px;padding: 14px;height: 50px;line-height: 25px;">User information page</h2>
+            <div class="border rounded" style="background-color: #ffffff;padding: 0px;margin: 21px;">
+                <h1 style="font-size: 25px;background-color: #f2f2f2;height: 55px;margin: 0px;padding: 15px;line-height: 17px;">
+                    About user</h1>
+                <div class="vh-100" style="background-color: #ffffff;padding: 29px">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th style="width: 50px;">ID</th>
+                            <th style="width: 120px;height: 50px;">First name</th>
+                            <th style="width: 120px;height: 50px;">Last name</th>
+                            <th style="width: 120px;height: 50px;">Age</th>
+                            <th style="width: 200px;">Login</th>
+                            <th style="width: 150px;">Role</th>
+                        </tr>
+                        </thead>
+                        <tbody style="height: 100px;">
+                        <tr style="height: 36px;">
+                            <td style="width: 50px;height: 63px;" id="id"></td>
+                            <td style="height: 63px;width: 120px;" id="firstName"></td>
+                            <td style="height: 63px;width: 200px;" id="lastName"></td>
+                            <td style="height: 63px;width: 200px;" id="age"></td>
+                            <td style="height: 63px;width: 200px;" id="login"></td>
+                            <td style="height: 63px;width: 150px;" id="role"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--SCRIPTS-->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src="/js/user.js"></script>
+</body>
+
+</html>
