@@ -14,7 +14,7 @@ window.onload = function () {
                     $('#roleTitle').append('<span>' + role.name + ' </span>');
                     $('#role').append('<span>' + role.name + ' </span>');
                     if (role.name === 'ADMIN') {
-                        $('#nav').prepend('<li class="nav-item"><a class="nav-link border rounded" href="/admin">Admin</a></li>');
+                        $('#nav').prepend('<li class="nav-item"><a class="nav-link" href="/admin">Admin</a></li>');
                     }
                 })
             }

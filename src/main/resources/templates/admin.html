@@ -28,7 +28,8 @@
 
             <ul class="nav nav-pills flex-column" aria-orientation="vertical">
                 <li class="nav-item">
-                    <a class="nav-link active" href="/user">User</a>
+                <li class="nav-item"><a class="nav-link active" href="/admin">Admin</a></li>
+                <li class="nav-item"><a class="nav-link" href="/user">User</a></li>
                 </li>
             </ul>
 
@@ -75,166 +76,164 @@
                         <div class="border rounded" style="background-color: #ffffff;padding: 0px;">
                             <h1 style="font-size: 25px;background-color: #f2f2f2;height: 55px;margin: 0px;padding: 15px;line-height: 17px;">
                                 Add new user</h1>
-                        <div class="container text-center" style="width: 350px">
-                            <form class="m-3" role="form" method="post">
-                                <div class="form-group">
-                                    <label for="firstName_input">First name</label>
-                                    <input id="firstName_input" class="form-control" type="text"
-                                           placeholder="Введите имя">
-                                </div>
-                                <div class="form-group">
-                                    <label for="lastName_input">Last name</label>
-                                    <input id="lastName_input" class="form-control" type="text"
-                                           placeholder="Введите фамилию">
-                                </div>
-                                <div class="form-group">
-                                    <label for="age_input">Age</label>
-                                    <input id="age_input" class="form-control" type="text"
-                                           placeholder="Введите возраст">
-                                </div>
-                                <div class="form-group">
-                                    <label for="login_input">Email</label>
-                                    <input id="login_input" class="form-control" type="email"
-                                           placeholder="Введите email">
-                                </div>
-                                <div class="form-group">
-                                    <label for="password_input">Password</label>
-                                    <input id="password_input" class="form-control" type="password"
-                                           placeholder="Введите пароль">
-                                </div>
-                                <div class="form-group">
-                                    <label for="roles_input">Role</label>
-                                    <select id="roles_input" class="custom-select" style="height: 65px"
-                                            multiple>
-                                        <option name="ADMIN">ADMIN</option>
-                                        <option name="USER">USER</option>
-                                        "
-                                    </select>
-                                </div>
-                                <div>
-                                    <button id="add_user" class="btn btn-success form-group" type="submit">
-                                        Add new user
-                                    </button>
-                                </div>
-                            </form>
+                            <div class="container text-center" style="width: 350px">
+                                <form class="m-3" role="form" method="post">
+                                    <div class="form-group">
+                                        <label for="firstName_input">First name</label>
+                                        <input id="firstName_input" class="form-control" type="text"
+                                               placeholder="Введите имя">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="lastName_input">Last name</label>
+                                        <input id="lastName_input" class="form-control" type="text"
+                                               placeholder="Введите фамилию">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="age_input">Age</label>
+                                        <input id="age_input" class="form-control" type="text"
+                                               placeholder="Введите возраст">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="login_input">Email</label>
+                                        <input id="login_input" class="form-control" type="email"
+                                               placeholder="Введите email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password_input">Password</label>
+                                        <input id="password_input" class="form-control" type="password"
+                                               placeholder="Введите пароль">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="roles_input">Role</label>
+                                        <select id="roles_input" class="custom-select" style="height: 65px"
+                                                multiple>
+                                            <option name="ADMIN">ADMIN</option>
+                                            <option name="USER">USER</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <button id="add_user" class="btn btn-success form-group" type="submit">
+                                            Add new user
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div id="editModal" class="modal fade" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Edit user</h4>
-                <button class="close" data-dismiss="modal">x</button>
-            </div>
-            <div class="modal-body" style="padding-right: 50px; padding-left: 50px">
-                <form id="editUser" class="m-3" role="form" method="post">
-                    <div class="form-group">
-                        <label for="id_edit">ID</label>
-                        <input id="id_edit" class="form-control" type="text" value=""
-                               placeholder="Введите ID" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="firstName_edit">First name</label>
-                        <input id="firstName_edit" class="form-control" type="text"
-                               placeholder="Введите имя">
-                    </div>
-                    <div class="form-group">
-                        <label for="lastName_edit">Last name</label>
-                        <input id="lastName_edit" class="form-control" type="text"
-                               placeholder="Введите фамилию">
-                    </div>
-                    <div class="form-group">
-                        <label for="age_edit">Age</label>
-                        <input id="age_edit" class="form-control" type="text"
-                               placeholder="Введите возраст">
-                    </div>
-                    <div class="form-group">
-                        <label for="login_edit">Email</label>
-                        <input id="login_edit" class="form-control" type="email"
-                               placeholder="Введите email">
-                    </div>
-                    <div class="form-group">
-                        <label for="password_edit">Password</label>
-                        <input id="password_edit" class="form-control" type="password"
-                               placeholder="Введите пароль">
-                    </div>
-                    <div class="form-group">
-                        <label for="roles_edit">Role</label>
-                        <select id="roles_edit" class="custom-select" style="height: 40px" multiple>
-                            <option name="roles"></option>
-                            <option name="ADMIN">ADMIN</option>
-                            <option name="USER">USER</option>
-                        </select>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-dark" data-dismiss="modal" form="editUser">Close</button>
-                <button class="btn btn-success" type="submit" form="editUser"
-                        onclick="update_user($('#id_edit').val())">
-                    Edit
-                </button>
+    <div id="editModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit user</h4>
+                    <button class="close" data-dismiss="modal">x</button>
+                </div>
+                <div class="modal-body" style="padding-right: 50px; padding-left: 50px">
+                    <form id="editUser" class="m-3" role="form" method="post">
+                        <div class="form-group">
+                            <label for="id_edit">ID</label>
+                            <input id="id_edit" class="form-control" type="text" value=""
+                                   placeholder="Введите ID" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="firstName_edit">First name</label>
+                            <input id="firstName_edit" class="form-control" type="text"
+                                   placeholder="Введите имя">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName_edit">Last name</label>
+                            <input id="lastName_edit" class="form-control" type="text"
+                                   placeholder="Введите фамилию">
+                        </div>
+                        <div class="form-group">
+                            <label for="age_edit">Age</label>
+                            <input id="age_edit" class="form-control" type="text"
+                                   placeholder="Введите возраст">
+                        </div>
+                        <div class="form-group">
+                            <label for="login_edit">Email</label>
+                            <input id="login_edit" class="form-control" type="email"
+                                   placeholder="Введите email">
+                        </div>
+                        <div class="form-group">
+                            <label for="password_edit">Password</label>
+                            <input id="password_edit" class="form-control" type="password"
+                                   placeholder="Введите пароль">
+                        </div>
+                        <div class="form-group">
+                            <label for="roles_edit">Role</label>
+                            <select id="roles_edit" class="custom-select" style="height: 65px" multiple>
+                                <option name="ADMIN">ADMIN</option>
+                                <option name="USER">USER</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-dark" data-dismiss="modal" form="editUser">Close</button>
+                    <button id="editButton" class="btn btn-success" type="submit" form="editUser">
+                        Edit
+                    </button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div id="deleteModal" class="modal fade" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Delete user</h4>
-                <button class="close" data-dismiss="modal">x</button>
-            </div>
-            <div class="modal-body" style="padding-right: 50px; padding-left: 50px">
-                <form id="data" class="m-3" role="form" method="post">
-                    <div class="form-group">
-                        <label for="id_delete">ID</label>
-                        <input id="id_delete" class="form-control" type="text"
-                               placeholder="Введите ID" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="firstName_delete">First name</label>
-                        <input id="firstName_delete" class="form-control" type="text"
-                               placeholder="Введите имя" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="lastName_delete">Last name</label>
-                        <input id="lastName_delete" class="form-control" type="text"
-                               placeholder="Введите фамилию" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="age_delete">Age</label>
-                        <input id="age_delete" class="form-control" type="text"
-                               placeholder="Введите возраст" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="login_delete">Email</label>
-                        <input id="login_delete" class="form-control" type="email"
-                               placeholder="Введите email" readonly>
-                    </div>
+    <div id="deleteModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete user</h4>
+                    <button class="close" data-dismiss="modal">x</button>
+                </div>
+                <div class="modal-body" style="padding-right: 50px; padding-left: 50px">
+                    <form id="data" class="m-3" role="form" method="post">
+                        <div class="form-group">
+                            <label for="id_delete">ID</label>
+                            <input id="id_delete" class="form-control" type="text"
+                                   placeholder="Введите ID" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="firstName_delete">First name</label>
+                            <input id="firstName_delete" class="form-control" type="text"
+                                   placeholder="Введите имя" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName_delete">Last name</label>
+                            <input id="lastName_delete" class="form-control" type="text"
+                                   placeholder="Введите фамилию" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="age_delete">Age</label>
+                            <input id="age_delete" class="form-control" type="text"
+                                   placeholder="Введите возраст" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="login_delete">Email</label>
+                            <input id="login_delete" class="form-control" type="email"
+                                   placeholder="Введите email" readonly>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="roles_delete">Role</label>
-                        <select id="roles_delete" class="custom-select" style="height: 40px" multiple
-                                readonly>
-                            <option name="roles"></option>
-                        </select>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-dark" data-dismiss="modal" form="data">Close</button>
-                <button class="btn btn-danger" type="submit" form="data"
-                        id="deleteUser">
-                    Delete
-                </button>
+                        <div class="form-group">
+                            <label for="roles_delete">Role</label>
+                            <select id="roles_delete" class="custom-select" style="height: 40px" multiple
+                                    readonly>
+                                <option name="roles"></option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-dark" data-dismiss="modal" form="data">Close</button>
+                    <button class="btn btn-danger" type="submit" form="data"
+                            id="deleteUser">
+                        Delete
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -250,6 +249,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 <script src="/js/admin.js"></script>
+
 </body>
 
 </html>

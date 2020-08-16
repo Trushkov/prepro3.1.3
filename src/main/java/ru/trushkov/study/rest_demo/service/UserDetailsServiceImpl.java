@@ -16,7 +16,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     UserRepository dao;
 
-    @Transactional(readOnly = true)
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
         return dao.findUserByLogin(login);

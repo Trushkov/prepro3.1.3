@@ -1,7 +1,17 @@
 `use strict`
 
-$(document).ready(function () {
-    show_users()
+$('document').ready(function () {
+    $.ajax('/user_data', {
+        method: 'GET',
+        success: function (user) {
+            $('#nameTitle').text(user.login)
+            user.roles.forEach(function (role) {
+                $('#roleTitle').append('<span>' + role.name + ' </span>');
+                $('#role').append('<span>' + role.name + ' </span>');
+            })
+        }
+    })
+    show_users();
 })
 
 function show_users() {
@@ -39,3 +49,98 @@ function show_users() {
         }
     })
 }
+
+//добавление юзера
+$('#add_user').on('click', function (event) {
+    event.preventDefault();
+    let user = {
+        id: $("#id_input").val(),
+        firstName: $("#firstName_input").val(),
+        lastName: $("#lastName_input").val(),
+        age: $("#age_input").val(),
+        login: $("#login_input").val(),
+        password: $("#password_input").val(),
+        roles: $("#roles_input").val()
+    };
+
+    $.ajax(`/users/add`, {
+        data: JSON.stringify(user),
+        dataType: 'json',
+        contentType: 'application/JSON; charset=utf-8',
+        method: 'POST',
+        success: function () {
+            $(`#users_table`).addClass(`active`);
+            $(`#new_user_form`).removeClass(`active`);
+            $(`#admin_link`).addClass(`active`);
+            $(`#user_link`).removeClass(`active`);
+            show_users();
+        }
+    })
+})
+
+function doWhenOpeningDeleteModal(id) {
+    let firstName = $('#firstName' + id).text();
+    let lastName = $('#lastName' + id).text();
+    let age = $('#age' + id).text();
+    let login = $('#login' + id).text();
+    let roles = $('#roles' + id).text().trim().split(" ");
+    $('#id_delete').val(id);
+    $('#firstName_delete').val(firstName);
+    $('#lastName_delete').val(lastName);
+    $('#age_delete').val(age);
+    $('#login_delete').val(login);
+    $('#roles_delete').empty();
+    $.each(roles, function (key, value) {
+        $('#roles_delete').append('<option value="' + key + '">' + value + '</option>');
+    });
+}
+
+$('#deleteUser').on('click', function deleteUser() {
+    let id = $('#deleteModal #id_delete').val();
+    console.log(id)
+    $.ajax('/users/delete/' + id, {
+        method: 'DELETE',
+        success: function () {
+            $("#users").find('#tr' + id).remove();
+            show_users();
+        }
+    })
+})
+
+function doWhenOpeningEditModal(id) {
+    let firstName = $('#firstName' + id).text();
+    let lastName = $('#lastName' + id).text();
+    let age = $('#age' + id).text();
+    let login = $('#login' + id).text();
+    let roles = $('#roles' + id).text().trim().split(" ");
+    console.log(firstName + lastName + age + login + roles)
+    $('#id_edit').val(id);
+    $('#firstName_edit').val(firstName);
+    $('#lastName_edit').val(lastName);
+    $('#age_edit').val(age);
+    $('#login_edit').val(login);
+}
+
+//кнопка в модалке редактирования
+$('#editButton').on('click', function (event) {
+    event.preventDefault();
+    let user = {
+        id: $("#id_edit").val(),
+        firstName: $("#firstName_edit").val(),
+        lastName: $("#lastName_edit").val(),
+        age: $("#age_edit").val(),
+        login: $("#login_edit").val(),
+        password: $("#password_edit").val(),
+        roles: $("#roles_edit").val()
+    };
+    $.ajax('/users/add', {
+        data: JSON.stringify(user),
+        dataType: 'json',
+        contentType: 'application/JSON; charset=utf-8',
+        method: 'POST',
+        success: function () {
+            show_users();
+        }
+    })
+})
+
