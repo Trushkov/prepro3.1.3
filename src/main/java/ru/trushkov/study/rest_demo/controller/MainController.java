@@ -48,7 +48,7 @@ public class MainController {
         } else {
             userService.updateUser(user);
         }
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/users/{id}")

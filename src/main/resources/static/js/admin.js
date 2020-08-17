@@ -78,6 +78,7 @@ $('#add_user').on('click', function (event) {
     })
 })
 
+//заполняем форму удаления данными юзера
 function doWhenOpeningDeleteModal(id) {
     let firstName = $('#firstName' + id).text();
     let lastName = $('#lastName' + id).text();
@@ -95,7 +96,9 @@ function doWhenOpeningDeleteModal(id) {
     });
 }
 
-$('#deleteUser').on('click', function deleteUser() {
+//обработка нажатия кнопки удаления юзера
+$('#deleteButton').on('click', function deleteUser(event) {
+
     let id = $('#deleteModal #id_delete').val();
     console.log(id)
     $.ajax('/users/' + id, {
@@ -107,6 +110,7 @@ $('#deleteUser').on('click', function deleteUser() {
     })
 })
 
+//заполняем форму редактирония данными юзера
 function doWhenOpeningEditModal(id) {
     let firstName = $('#firstName' + id).text();
     let lastName = $('#lastName' + id).text();
@@ -121,9 +125,9 @@ function doWhenOpeningEditModal(id) {
     $('#login_edit').val(login);
 }
 
-//кнопка в модалке редактирования
+//обработка нажатия кнопки редактирования
 $('#editButton').on('click', function (event) {
-    event.preventDefault();
+
     let user = {
         id: $("#id_edit").val(),
         firstName: $("#firstName_edit").val(),

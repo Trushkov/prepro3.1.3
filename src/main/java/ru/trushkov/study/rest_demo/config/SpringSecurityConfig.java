@@ -42,7 +42,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     // роль admin всегда есть доступ к /admin/**
     // роль user всегда есть доступ к /user/**
-    // Наш кастомный "403 access denied" обработчик
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.logout()
