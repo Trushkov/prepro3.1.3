@@ -41,14 +41,21 @@ public class MainController {
     }
 
     @PostMapping(value = "/users/add")
-    public ResponseEntity<?> addUser(@RequestBody User user) {
-
-        if (user.getId() == 0) {
-            userService.addUser(user);
-        } else {
-            userService.updateUser(user);
+    public ResponseEntity<User> addUser(@RequestBody User user) {
+        if (user == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(HttpStatus.OK);
+        userService.addUser(user);
+        return new ResponseEntity<>(user, HttpStatus.CREATED);
+    }
+
+    @PutMapping(value = "/users/edit")
+    public ResponseEntity<User> editUser(@RequestBody User user) {
+        if (user == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        userService.addUser(user);
+        return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
 
     @DeleteMapping(value = "/users/{id}")

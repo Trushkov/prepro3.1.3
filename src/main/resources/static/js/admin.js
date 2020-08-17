@@ -69,10 +69,10 @@ $('#add_user').on('click', function (event) {
         contentType: 'application/JSON; charset=utf-8',
         method: 'POST',
         success: function () {
-            $(`#users_table`).addClass(`active`);
-            $(`#new_user_form`).removeClass(`active`);
-            $(`#admin_link`).addClass(`active`);
-            $(`#user_link`).removeClass(`active`);
+            $('#tab1').addClass('active');
+            $('#tab-1').addClass('active');
+            $('#tab2').removeClass('active');
+            $('#tab-2').removeClass('active');
             show_users();
         }
     })
@@ -98,7 +98,6 @@ function doWhenOpeningDeleteModal(id) {
 
 //обработка нажатия кнопки удаления юзера
 $('#deleteButton').on('click', function deleteUser(event) {
-
     let id = $('#deleteModal #id_delete').val();
     console.log(id)
     $.ajax('/users/' + id, {
@@ -137,11 +136,11 @@ $('#editButton').on('click', function (event) {
         password: $("#password_edit").val(),
         roles: $("#roles_edit").val()
     };
-    $.ajax('/users/add', {
+    $.ajax('/users/edit', {
         data: JSON.stringify(user),
         dataType: 'json',
         contentType: 'application/JSON; charset=utf-8',
-        method: 'POST',
+        method: 'PUT',
         success: function () {
             show_users();
         }
