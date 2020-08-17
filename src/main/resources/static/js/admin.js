@@ -101,7 +101,7 @@ $('#deleteUser').on('click', function deleteUser() {
     $.ajax('/users/delete/' + id, {
         method: 'DELETE',
         success: function () {
-            $("#users").find('#tr' + id).remove();
+            $("#table_data").find('#tr' + id).remove();
             show_users();
         }
     })

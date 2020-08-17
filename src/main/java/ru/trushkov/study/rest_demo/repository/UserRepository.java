@@ -5,5 +5,5 @@ import ru.trushkov.study.rest_demo.model.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    User findUserByLogin(String login);
+    User findByLogin(String login);
 }

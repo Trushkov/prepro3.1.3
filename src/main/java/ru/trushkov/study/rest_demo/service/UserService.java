@@ -8,9 +8,9 @@ public interface UserService {
 
     void addUser(User user);
 
-    User getUser(long id);
+    User getUser(Long id);
 
-    void remove(long id);
+    void remove(Long id);
 
     void updateUser(User user);
 
