@@ -26,13 +26,7 @@ public class MainController {
     @Autowired
     UserService userService;
 
-    @Autowired
-    PasswordEncoder passwordEncoder;
-
-    @Autowired
-    RoleServiceImpl roleService;
-
-    @GetMapping(value = {"/user_data"})
+    @GetMapping(value = "/user_data")
     public ResponseEntity<User> getUserInfo() {
         User user = (User) SecurityContextHolder
                 .getContext()
@@ -41,7 +35,7 @@ public class MainController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @GetMapping(value = {"/users"})
+    @GetMapping(value = "/users")
     public ResponseEntity<List<User>> getUsers() {
         return new ResponseEntity<>(userService.getUsers(), HttpStatus.OK);
     }
@@ -57,7 +51,7 @@ public class MainController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @DeleteMapping(value = "/users/delete/{id}")
+    @DeleteMapping(value = "/users/{id}")
     public ResponseEntity<?> removeUser(@PathVariable (name = "id") long id) {
         userService.remove(id);
         return new ResponseEntity<>(HttpStatus.OK);

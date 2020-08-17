@@ -98,7 +98,7 @@ function doWhenOpeningDeleteModal(id) {
 $('#deleteUser').on('click', function deleteUser() {
     let id = $('#deleteModal #id_delete').val();
     console.log(id)
-    $.ajax('/users/delete/' + id, {
+    $.ajax('/users/' + id, {
         method: 'DELETE',
         success: function () {
             $("#table_data").find('#tr' + id).remove();

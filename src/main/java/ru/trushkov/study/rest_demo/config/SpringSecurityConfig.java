@@ -13,15 +13,22 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import ru.trushkov.study.rest_demo.config.handler.LoginSuccessHandler;
 
 @Configuration
 @EnableWebSecurity(debug = true)
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    @Qualifier("userDetailsServiceImpl")
-    UserDetailsService userDetailsService;
+
+    private final UserDetailsService userDetailsService;
+
+    private final LoginSuccessHandler loginSuccessHandler;
+
+    public SpringSecurityConfig(@Qualifier("userDetailsServiceImpl") UserDetailsService userDetailsService, LoginSuccessHandler loginSuccessHandler) {
+        this.userDetailsService = userDetailsService;
+        this.loginSuccessHandler = loginSuccessHandler;
+    }
 
     @Bean
     public PasswordEncoder bCryptPasswordEncoder(){
@@ -38,19 +45,25 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     // Наш кастомный "403 access denied" обработчик
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.logout()
+                // разрешаем делать логаут всем
+                .permitAll()
+                // указываем URL логаута
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                // указываем URL при удачном логауте
+                .logoutSuccessUrl("/login")
+                //выклчаем кроссдоменную секьюрность (на этапе обучения неважна)
+                .and().csrf().disable();
 
-        http.csrf().disable()
+        http
                 .authorizeRequests()
-                .antMatchers("/admin/**", "/user/**").hasRole("ADMIN")
-                .antMatchers("/user/**").hasRole("USER")
-                .antMatchers("/registration").permitAll()
-                .antMatchers("/resources/**").permitAll()
-                .antMatchers("/js/**").permitAll()
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/user/**").hasAnyRole("USER", "ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .successHandler(new LoginSuccessHandler())
+                .successHandler(loginSuccessHandler)
                 .permitAll()
                 .and()
                 .logout()
